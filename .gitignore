@@ -1,1 +1,5 @@
 music_controller/frontend/node_modules/*
+music_controller/frontend/static/frontend/*
+*.pyc
+music_controller/frontend/migrations/_pycache_/*
+music_controller/api/_pycache_/*
