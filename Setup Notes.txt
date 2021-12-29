@@ -1,0 +1,79 @@
+Pre reqs: VS Code, Python, Node.js, setup WSL via VS Code (optional)
+P1. Install npm via conda in base env
+P2. Install VS code extensions: Prettier, Python, Django, Javascript (ES6) code snippets
+P3. Create python env for project and install following packages:
+	- pip install django djangorestframework
+
+
+1. Create music_controller project via the "django-admin startproject music_controller" command to create directory
+2. cd into music_controller
+3. create api app via "django-admin startapp <appname>"
+	- go to music_controller/settings.py and add the following to installed apps:
+			- api.apps.ApiConfig
+			- rest_framework
+	- api/views.py will contain end point requests
+	- create file within api called urls.py which will direct to views.py endpoint
+	- need to add urls in music_controller/urls.py that dispatch to api urls 
+	- models.py allow us to run python code to create tables and databases
+	- - example is room class that gets a view in views and urls dispatch to it 
+	- also need serializer.py file in api app to serialize python objects into string/json responses
+	
+	Whenever we make changes to a model, need to make migrations with parent folder/manage.py file:
+	- python manage.py makemigrations (the first time it will create sqlite db)
+	- apply migrations: python manage.py migrate
+	
+	Run Server:
+	- python manage.py runserver
+	
+4. Create frontend app within music_controller directory via: django-admin startapp frontend 
+	- add additional directories: static, templates, src
+	- - within static, add css, frontend, images,
+	- - within src directory add components directory 
+	- add to installed apps in settings.py
+	
+5. init npm project and add ons
+	- within frontend directory, run following commands:
+		- npm init -y
+		- npm i webpack webpack-cli --save-dev
+		- npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
+		- npm i react react-dom --save-dev
+		- npm install @material-ui/core
+		- npm install @babel/plugin-proposal-class-properties
+		- npm install react-router-dom
+		- npm install @material-ui/icons
+		
+6. configuration scripts
+	- within frontend: create babel.config.json 
+	- - copy contents from: https://github.com/techwithtim/Music-Controller-Web-App-Tutorial/blob/main/Tutorial%201%20-%204/frontend/babel.config.json
+	- within frontend: create webpack.config.js (bundles all of JS into one file)
+	- - copy contents from: https://github.com/techwithtim/Music-Controller-Web-App-Tutorial/blob/main/Tutorial%201%20-%204/frontend/webpack.config.js
+	- open frontend/package.json and copy paste dev ande build blocks into scripts from: https://github.com/techwithtim/Music-Controller-Web-App-Tutorial/blob/main/Tutorial%201%20-%204/frontend/package.json
+
+7. configure so that react renders html that django takes control of
+	- create file within src called index.js 
+	- create folder frontend within frontend/templates
+	- - within directory create index.html and copy/paste standard html tags from: https://github.com/techwithtim/Music-Controller-Web-App-Tutorial/blob/main/Tutorial%201%20-%204/frontend/templates/frontend/index.html
+	- create view to render frontend template within frontend/views.py
+		- copy and paste from https://github.com/techwithtim/Music-Controller-Web-App-Tutorial/blob/main/Tutorial%201%20-%204/frontend/views.py
+	- create urls file in frontend and copy and paste from: https://github.com/techwithtim/Music-Controller-Web-App-Tutorial/blob/main/Tutorial%201%20-%204/frontend/urls.py
+	- create link from parent urls to frontend urls (add path('', include('frontend.urls')))
+
+8. start writing react components 
+	- within frontend/src/components create App.js, copy and paste from: 
+	- import app in src/index.js (import App from "./components/App";)
+
+--- should be able to run link after starting server and (python manage.py runserver & npm run dev in seperate terminals"
+-----will get "Testing React Code" in browser
+----- end of tutorial 3
+
+add index.css within frontend/static/css https://github.com/techwithtim/Music-Controller-Web-App-Tutorial/blob/main/Tutorial%201%20-%204/frontend/static/css/index.css
+add homepage.js component and other components for other web pages, play with routers and switches
+
+---end tutorial 4
+
+tutorial 5: Handling Post Requests (backend Django)
+Create Room Post Requests 
+Need to add CreateRoomSerializer that handles the post request of guest_can_pause and votes_to_skip when creating a room 
+added logic to allow someone to rejoin existing session or create new one with session key and id 
+
+tutorial 6: Material UI Components
