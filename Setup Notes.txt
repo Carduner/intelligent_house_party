@@ -41,6 +41,7 @@ P3. Create python env for project and install following packages:
 		- npm install @babel/plugin-proposal-class-properties
 		- npm install react-router-dom
 		- npm install @material-ui/icons
+		- npm install @material-ui/lab
 		
 6. configuration scripts
 	- within frontend: create babel.config.json 
