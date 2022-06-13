@@ -1,0 +1,29 @@
+# notes to start webplayer after cloning main repo
+
+# get credentials.py file 
+
+# go to music controller directory
+# activate virtual python env (spotify)
+<conda activate spotify>
+
+# run following commands to create db, make and apply migrations, and run backend server
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+
+# run following to get frontend packages installed and running
+	- within frontend directory, run following commands:
+npm init -y
+npm i webpack webpack-cli --save-dev
+npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
+npm i react react-dom --save-dev
+npm install @material-ui/core
+npm install @babel/plugin-proposal-class-properties
+npm install react-router-dom
+npm install @material-ui/icons
+npm install @material-ui/lab
+
+
+# run 
+npm run dev

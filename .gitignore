@@ -6,3 +6,7 @@ music_controller/frontend/migrations/_pycache_/*
 db.sqlite3
 ./*/_pycache_
 music_controller/spotify/credentials.py
+music_controller/api/migrations/__pycache__/*
+**/__pycache__/*
+**.pyc
+./*/*/__pycache__/
